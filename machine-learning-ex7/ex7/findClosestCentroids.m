@@ -21,7 +21,18 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+for i=1:length(idx)
+    delta=X(i,:)-centroids(1,:);
+    min=delta*delta';
+    idx(i)=1;
+    for j=2:size(centroids,1)
+        delta=X(i,:)-centroids(j,:);
+        if delta*delta'<min
+            idx(i)=j;
+            min=delta*delta';
+        end
+    end
+end
 
 
 
